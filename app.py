@@ -190,4 +190,10 @@ def logout():
 # Run App
 # -------------------------------------
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    import os
+    # Pull the port from Render's environment, or fallback to 5001 for local testing
+    port = int(os.environ.get("PORT", 5001))
+    
+    # host="0.0.0.0" allows Render to see the application
+    # debug should ideally be False in production, but we can leave it or manage it via env
+    app.run(host="0.0.0.0", port=port, debug=False)
