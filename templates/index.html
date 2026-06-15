@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MoodStream | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(120deg, #1e1e2f, #2b5876, #4e4376);
+    background-size: 300% 300%;
+    animation: gradientMove 10s ease infinite;
+    color: #fff;
+}
+
+/* Gradient Animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Navbar */
+nav {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.08);
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #4db5ff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #4db5ff;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.hero-content {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 50px 60px;
+    border-radius: 18px;
+    text-align: center;
+    max-width: 650px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #e0e0e0;
+}
+
+/* CTA Button */
+.hero a {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #4db5ff, #6f7cff);
+    color: #fff;
+    border-radius: 30px;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hero a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(77,181,255,0.5);
+}
+
+/* Footer */
+footer {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+</style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">MoodStream</div>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome To MoodStream</h1>
+            <p> Discover Music & Movies by Your Mood
+                Moodify recommends personalized music and movies based on
+                how you feel and what you love.
+            </p>
+            <a href="/login">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 MoodStream | All Rights Reserved
+    </footer>
+
+</body>
+</html>
