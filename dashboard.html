@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Mood System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Segoe UI", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .card {
+            background: #fff;
+            padding: 35px 28px;
+            width: 100%;
+            max-width: 420px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+            animation: fade .6s ease;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .username { color: #667eea; }
+
+        p {
+            margin: 0 0 28px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: block;
+            padding: 13px;
+            margin: 12px 0;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 15px;
+            color: #fff;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: .3s;
+        }
+
+        .btn.secondary {
+            background: linear-gradient(135deg, #607d8b, #455a64);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,.2);
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: scale(.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Welcome to MoodStream <span class="username">{{ username }}</span> 👋</h1>
+    <p>Select your mood to get music and movie recommendations.</p>
+
+    <a class="btn" href="/mood">Choose Your Mood</a>
+    <a class="btn secondary" href="/logout">Logout</a>
+</div>
+
+</body>
+</html>

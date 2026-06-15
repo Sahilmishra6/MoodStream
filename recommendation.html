@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendations | Mood System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 30px 15px;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .section {
+            background: #fff;
+            padding: 22px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+            animation: fade .6s ease;
+        }
+
+        .section h2 {
+            margin: 0 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f2f2f2;
+            color: #667eea;
+        }
+
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        li {
+            padding: 12px 10px;
+            margin-bottom: 10px;
+            background: #f7f8ff;
+            border-radius: 10px;
+            transition: .3s;
+        }
+
+        li:hover {
+            transform: translateX(4px);
+            background: #eef0ff;
+        }
+
+        .meta { font-size: 13px; color: #666; }
+
+        .empty {
+            text-align: center;
+            font-style: italic;
+            color: #777;
+        }
+
+        .actions {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            margin: 6px;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: .3s;
+        }
+
+        .btn.secondary {
+            background: linear-gradient(135deg, #607d8b, #455a64);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,.2);
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: scale(.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Recommendations for <em>"{{ mood }}"</em> Mood</h1>
+
+<div class="container">
+
+    <div class="section">
+        <h2>🎵 Music</h2>
+        {% if music %}
+        <ul>
+            {% for song in music %}
+            <li>
+                <strong>{{ song['title'] }}</strong><br>
+                <span class="meta">by {{ song['artist'] }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty">No music found for this mood.</p>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h2>🎬 Movies</h2>
+        {% if movies %}
+        <ul>
+            {% for movie in movies %}
+            <li>
+                <strong>{{ movie['title'] }}</strong><br>
+                <span class="meta">Genre: {{ movie['genre'] }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty">No movies found for this mood.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<div class="actions">
+    <a class="btn" href="/dashboard">Back to Dashboard</a>
+    <a class="btn secondary" href="/logout">Logout</a>
+</div>
+
+</body>
+</html>
