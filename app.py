@@ -54,7 +54,7 @@ def login():
             return redirect('/dashboard')
 
         flash("Invalid email or password")
-        return redirect('/')
+        return redirect('/login')
 
     return render_template('login.html')
 
@@ -95,7 +95,7 @@ def signup():
             if db: db.close()
 
         flash("Signup successful! Please login.")
-        return redirect('/')
+        return redirect('/login')
 
     return render_template('signup.html')
 
