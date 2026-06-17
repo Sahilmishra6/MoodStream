@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Recommendations | Mood System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
@@ -24,6 +27,7 @@
         }
 
         .container {
+            width: 100%;
             max-width: 950px;
             margin: auto;
             display: grid;
@@ -35,7 +39,7 @@
             background: #fff;
             padding: 22px;
             border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
             animation: fade .6s ease;
         }
 
@@ -46,7 +50,11 @@
             color: #667eea;
         }
 
-        ul { list-style: none; padding: 0; margin: 0; }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
         li {
             padding: 12px 10px;
@@ -56,12 +64,20 @@
             transition: .3s;
         }
 
+        li {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
         li:hover {
             transform: translateX(4px);
             background: #eef0ff;
         }
 
-        .meta { font-size: 13px; color: #666; }
+        .meta {
+            font-size: 13px;
+            color: #666;
+        }
 
         .empty {
             text-align: center;
@@ -92,60 +108,88 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,.2);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, .2);
         }
 
         @keyframes fade {
-            from { opacity: 0; transform: scale(.96); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .section {
+                padding: 18px;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<h1>Recommendations for <em>"{{ mood }}"</em> Mood</h1>
+    <h1>Recommendations for <em>"{{ mood }}"</em> Mood</h1>
 
-<div class="container">
+    <div class="container">
 
-    <div class="section">
-        <h2>🎵 Music</h2>
-        {% if music %}
-        <ul>
-            {% for song in music %}
-            <li>
-                <strong>{{ song['title'] }}</strong><br>
-                <span class="meta">by {{ song['artist'] }}</span>
-            </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p class="empty">No music found for this mood.</p>
-        {% endif %}
+        <div class="section">
+            <h2>🎵 Music</h2>
+            {% if music %}
+            <ul>
+                {% for song in music %}
+                <li>
+                    <strong>{{ song['title'] }}</strong><br>
+                    <span class="meta">by {{ song['artist'] }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="empty">No music found for this mood.</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>🎬 Movies</h2>
+            {% if movies %}
+            <ul>
+                {% for movie in movies %}
+                <li>
+                    <strong>{{ movie['title'] }}</strong><br>
+                    <span class="meta">Genre: {{ movie['genre'] }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="empty">No movies found for this mood.</p>
+            {% endif %}
+        </div>
+
     </div>
 
-    <div class="section">
-        <h2>🎬 Movies</h2>
-        {% if movies %}
-        <ul>
-            {% for movie in movies %}
-            <li>
-                <strong>{{ movie['title'] }}</strong><br>
-                <span class="meta">Genre: {{ movie['genre'] }}</span>
-            </li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p class="empty">No movies found for this mood.</p>
-        {% endif %}
+    <div class="actions">
+        <a class="btn" href="/dashboard">Back to Dashboard</a>
+        <a class="btn secondary" href="/logout">Logout</a>
     </div>
-
-</div>
-
-<div class="actions">
-    <a class="btn" href="/dashboard">Back to Dashboard</a>
-    <a class="btn secondary" href="/logout">Logout</a>
-</div>
 
 </body>
+
 </html>
