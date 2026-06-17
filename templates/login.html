@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Mood System</title>
 
     <style>
@@ -13,7 +15,8 @@
         }
 
         body {
-            height: 100vh;
+            min-height: 100vh;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,8 +24,9 @@
         }
 
         .container {
-            width: 536px;
-            padding: 98px;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(12px);
             border-radius: 15px;
@@ -98,6 +102,25 @@
         .footer-text a:hover {
             text-decoration: underline;
         }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .subtitle {
+                font-size: 13px;
+            }
+
+            input,
+            button {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -108,13 +131,13 @@
         <p class="subtitle">Login to get music & movies based on your mood</p>
 
         {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <div class="message">
-              {% for msg in messages %}
-                {{ msg }}
-              {% endfor %}
-            </div>
-          {% endif %}
+        {% if messages %}
+        <div class="message">
+            {% for msg in messages %}
+            {{ msg }}
+            {% endfor %}
+        </div>
+        {% endif %}
         {% endwith %}
 
         <form method="POST">
@@ -129,4 +152,5 @@
     </div>
 
 </body>
+
 </html>
