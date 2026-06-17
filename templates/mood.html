@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Select Mood | Mood System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
             min-height: 100vh;
+            padding: 20px;
+            /* ADD THIS */
             font-family: "Segoe UI", sans-serif;
             display: flex;
             justify-content: center;
@@ -24,7 +29,7 @@
             max-width: 420px;
             padding: 35px 28px;
             border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .15);
             animation: fade .6s ease;
         }
 
@@ -62,7 +67,7 @@
         select:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 2px rgba(102,126,234,.2);
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, .2);
         }
 
         .note {
@@ -85,7 +90,7 @@
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,.2);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, .2);
         }
 
         .message {
@@ -99,62 +104,85 @@
         }
 
         @keyframes fade {
-            from { opacity: 0; transform: scale(.95); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            select,
+            button {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h2>How are you feeling? 😊</h2>
-    <p class="subtitle">Choose your mood & preferred movie genre</p>
+    <div class="container">
+        <h2>How are you feeling? 😊</h2>
+        <p class="subtitle">Choose your mood & preferred movie genre</p>
 
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
         <div class="message">
-          {% for msg in messages %}
+            {% for msg in messages %}
             {{ msg }}
-          {% endfor %}
+            {% endfor %}
         </div>
-      {% endif %}
-    {% endwith %}
+        {% endif %}
+        {% endwith %}
 
-    <form method="POST">
-        <label>Your Mood</label>
-        <select name="mood" required>
-            <option value="">-- Choose Mood --</option>
-            <option value="happy">😊 Happy</option>
-            <option value="sad">😢 Sad</option>
-            <option value="relaxed">😌 Relaxed</option>
-            <option value="angry">😠 Angry</option>
-            <option value="romantic">🥰 Romantic</option>
-            <option value="serious">😐 Serious</option>
-            <option value="bored">🥱 Bored</option>
-            <option value="curious">🤔 Curious</option>
-            <option value="disgusted">😖 Disgusted</option>
-        </select>
+        <form method="POST">
+            <label>Your Mood</label>
+            <select name="mood" required>
+                <option value="">-- Choose Mood --</option>
+                <option value="happy">😊 Happy</option>
+                <option value="sad">😢 Sad</option>
+                <option value="relaxed">😌 Relaxed</option>
+                <option value="angry">😠 Angry</option>
+                <option value="romantic">🥰 Romantic</option>
+                <option value="serious">😐 Serious</option>
+                <option value="bored">🥱 Bored</option>
+                <option value="curious">🤔 Curious</option>
+                <option value="disgusted">😖 Disgusted</option>
+            </select>
 
-        <label>Movie Genre</label>
-        <select name="genre" required>
-            <option value="">-- Choose Genre --</option>
-            <option value="action">🎬 Action</option>
-            <option value="comedy">😂 Comedy</option>
-            <option value="romance">❤️ Romance</option>
-            <option value="horror">😱 Horror</option>
-            <option value="adventure">🧭 Adventure</option>
-            <option value="drama">🎭 Drama</option>
-            <option value="crime Thriller">🕵️ Crime Thriller</option>
-            <option value="fantasy">🐉 Fantasy</option>
-            <option value="sci-fi">🚀 Sci-Fi</option>
-        </select>
+            <label>Movie Genre</label>
+            <select name="genre" required>
+                <option value="">-- Choose Genre --</option>
+                <option value="action">🎬 Action</option>
+                <option value="comedy">😂 Comedy</option>
+                <option value="romance">❤️ Romance</option>
+                <option value="horror">😱 Horror</option>
+                <option value="adventure">🧭 Adventure</option>
+                <option value="drama">🎭 Drama</option>
+                <option value="crime Thriller">🕵️ Crime Thriller</option>
+                <option value="fantasy">🐉 Fantasy</option>
+                <option value="sci-fi">🚀 Sci-Fi</option>
+            </select>
 
-        <div class="note">Genre selection applies only to movies</div>
+            <div class="note">Genre selection applies only to movies</div>
 
-        <button type="submit">Get Recommendations</button>
-    </form>
-</div>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
 
 </body>
+
 </html>
